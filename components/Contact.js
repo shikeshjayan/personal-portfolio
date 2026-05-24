@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Github, Send, MapPin, Clock, MessageCircle } from 'lucide-react'
+import { Mail, Linkedin, Send, MapPin, Clock, MessageCircle, CheckCircle, Phone } from 'lucide-react'
 import { personalInfo } from '../data/portfolio'
 import { fadeInUp, staggerContainer } from '../data/animations'
 
@@ -14,18 +15,18 @@ const contactLinks = [
     color: 'blue',
   },
   {
+    icon: Phone,
+    label: 'WhatsApp',
+    value: '+91 88485 38151',
+    href: 'https://wa.me/918848538151',
+    color: 'blue',
+  },
+  {
     icon: Linkedin,
     label: 'LinkedIn',
     value: 'linkedin.com/in/shikeshjayan',
     href: personalInfo.linkedin,
     color: 'blue',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: 'github.com/shikeshjayan',
-    href: personalInfo.github,
-    color: 'slate',
   },
 ]
 
@@ -35,14 +36,22 @@ const colorMap = {
     icon: 'text-primary-600 dark:text-primary-400',
     hover: 'hover:bg-primary-100 dark:hover:bg-primary-900/40',
   },
-  slate: {
-    bg: 'bg-slate-50 dark:bg-slate-800',
-    icon: 'text-slate-600 dark:text-slate-400',
-    hover: 'hover:bg-slate-100 dark:hover:bg-slate-700',
-  },
 }
 
 export default function Contact() {
+  const [formStatus, setFormStatus] = useState(null)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const data = Object.fromEntries(formData)
+
+    const message = `*Portfolio Inquiry*%0A%0A*Name:* ${data.name}%0A*Email:* ${data.email}%0A*Subject:* ${data.subject}%0A*Message:* ${data.message}`
+
+    window.open(`https://wa.me/918848538151?text=${message}`, '_blank')
+    e.target.reset()
+    setFormStatus('success')
+  }
   return (
     <section id="contact" className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -135,12 +144,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <form
-            action={`mailto:${personalInfo.email}?subject=Portfolio Inquiry`}
-            method="post"
-            encType="text/plain"
-            className="space-y-4"
-          >
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
               <motion.div
                 whileFocus={{ scale: 1.01 }}
@@ -188,9 +192,20 @@ export default function Contact() {
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-all hover:shadow-lg hover:shadow-primary-600/30"
             >
               <Send size={18} />
-              Send Message
+              Send via WhatsApp
             </motion.button>
           </form>
+
+          {formStatus === 'success' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-center gap-3"
+            >
+              <CheckCircle size={20} className="text-green-600 dark:text-green-400 flex-shrink-0" />
+              <p className="text-sm text-green-700 dark:text-green-300">Message sent successfully! I&apos;ll get back to you soon.</p>
+            </motion.div>
+          )}
         </motion.div>
 
         <motion.div

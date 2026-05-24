@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['vercel.app', 'github.com', 'githubusercontent.com'],
     unoptimized: true,
   },
 }

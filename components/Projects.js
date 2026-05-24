@@ -5,14 +5,14 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, ChevronDown, ChevronUp, Layers, Zap, Shield, Eye } from 'lucide-react'
 import { projects } from '../data/portfolio'
-import { fadeInUp, staggerContainer, staggerContainerFast } from '../data/animations'
+import { fadeInUp, staggerContainerFast } from '../data/animations'
 
-const filterOptions = ['All', 'Social Platform', 'E-Commerce', 'Utility']
+const filterOptions = ['All', 'Web App', 'E-Commerce', 'Portfolio']
 
 const categoryIcons = {
-  'Social Platform': Layers,
+  'Web App': Layers,
   'E-Commerce': Zap,
-  'Utility': Eye,
+  'Portfolio': Eye,
 }
 
 export default function Projects() {
@@ -86,7 +86,7 @@ export default function Projects() {
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <Image
-                      src={`/${project.id === 1 ? 'movieverse' : project.id === 2 ? 'Cartiqe' : 'weather-app'}.png`}
+                      src={`/${project.id === 1 ? 'movieverse' : project.id === 2 ? 'Cartiqe' : 'lensman'}.png`}
                       alt={project.name}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -139,9 +139,9 @@ export default function Projects() {
                           {project.subtitle}
                         </p>
                       </div>
-                      <motion.span
-                        whileHover={{ scale: 1.1 }}
-                        className="px-2 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded"
+                       <motion.span
+                         whileHover={{ scale: 1.1 }}
+                         className="px-2 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded whitespace-nowrap"
                       >
                         {project.category}
                       </motion.span>

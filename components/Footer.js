@@ -5,6 +5,7 @@ import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react'
 import { personalInfo } from '../data/portfolio'
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -64,7 +65,7 @@ export default function Footer() {
             className="border-t border-slate-800 pt-6 text-center"
           >
             <p className="text-sm text-slate-500">
-              © 2026 Shikesh Jayan. All rights reserved.
+              © {currentYear} {personalInfo.name}. All rights reserved.
             </p>
           </motion.div>
 

@@ -29,10 +29,8 @@ const highlights = [
 ]
 
 const stats = [
-  { value: '3+', label: 'Years Experience' },
   { value: '10+', label: 'Projects Built' },
   { value: 'MERN', label: 'Primary Stack' },
-  { value: '100%', label: 'Client Satisfaction' },
 ]
 
 export default function About() {

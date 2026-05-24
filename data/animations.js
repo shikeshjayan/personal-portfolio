@@ -3,26 +3,6 @@ export const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-export const fadeInLeft = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0 },
-}
-
-export const fadeInRight = {
-  hidden: { opacity: 0, x: 30 },
-  visible: { opacity: 1, x: 0 },
-}
-
-export const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-}
-
-export const scaleIn = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1 },
-}
-
 export const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -41,21 +21,6 @@ export const staggerContainerFast = {
       staggerChildren: 0.05,
     },
   },
-}
-
-export const staggerContainerSlow = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-}
-
-export const cardHover = {
-  rest: { scale: 1, y: 0 },
-  hover: { scale: 1.02, y: -5 },
 }
 
 export const buttonHover = {

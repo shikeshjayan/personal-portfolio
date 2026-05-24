@@ -13,8 +13,12 @@ export default function Navbar({ isDark, setIsDark }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-      
+      const scrollY = window.scrollY
+      setScrolled(scrollY > 50)
+
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      setScrollProgress(totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0)
+
       const sections = navLinks.map(link => link.href.slice(1))
       for (const section of sections.reverse()) {
         const element = document.getElementById(section)

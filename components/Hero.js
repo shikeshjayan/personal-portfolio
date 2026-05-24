@@ -131,16 +131,17 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className='hidden lg:block relative'
+            whileHover={{ scale: 1.05 }}
           >
             <div className='relative w-72 h-72 mx-auto'>
               <div className='absolute inset-0 rounded-full bg-gradient-to-tr from-primary-600 via-violet-500 to-primary-600 animate-pulse' />
               <div className='absolute inset-[4px] rounded-full bg-white dark:bg-slate-900' />
-              <motion.img
+              <Image
                 src='/profile.png'
                 alt={personalInfo.name}
+                width={288}
+                height={288}
                 className='relative w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-2xl'
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}
               />
               <motion.div
                 animate={{ y: [0, -5, 0] }}
